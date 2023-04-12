@@ -23,6 +23,14 @@
       "confirm_password": "dutt123456",
       "username": "dutt1",
       "id": 3
+    },
+    {
+      "name": "dutt2",
+      "email": "dutt2@gmail.com",
+      "password": "dutt123456",
+      "confirm_password": "dutt123456",
+      "username": "dutt2",
+      "id": 4
     }
   ]
 }

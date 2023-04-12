@@ -9,11 +9,12 @@ import { RegisterLoginService } from 'src/app/services/register-login.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+
   constructor(private _registerlogin:RegisterLoginService,private router:Router){}
 invalid:any
     ngOnInit() {
       this.User_Login_Form();
-
+     
     }
 
   
@@ -43,7 +44,7 @@ invalid:any
     if(Register_res_get){
       if((Register_res_get.username==this.user_login.value.username) && (Register_res_get.password==this.user_login.value.password)){
         this._registerlogin.get_Login_data(this.user_login.value)
-        this.router.navigate(['/front/home']);  
+        this.router.navigate(['/home']);  
         // this._RegisterService.Change_btn(this.Login_Logout_msg)
         // let btn=this._RegisterService.Change_btn(this.Login_Logout_msg)
         // let btn=this._registerlogin.Login_Logout_msg.next("Logout")

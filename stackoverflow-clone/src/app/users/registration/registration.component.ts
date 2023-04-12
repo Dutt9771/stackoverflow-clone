@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { RegisterLoginService } from 'src/app/services/register-login.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { RegisterLoginService } from 'src/app/services/register-login.service';
 })
 export class RegistrationComponent {  
     
-  constructor(private _registerlogin:RegisterLoginService){}
+  constructor(private _registerlogin:RegisterLoginService,private router:Router){}
   ngOnInit(){
     this.Registeration()
   }
@@ -54,6 +55,8 @@ export class RegistrationComponent {
           this._registerlogin.post_Register_data(this.Register.value).subscribe((Register_res:any)=>{
             if(Register_res){
               console.log("Register_res",Register_res)
+              sessionStorage.setItem("Register_User",JSON.stringify(this.Register.value))
+              this.router.navigate(['/front/users/login'])
             }
           })
         }
