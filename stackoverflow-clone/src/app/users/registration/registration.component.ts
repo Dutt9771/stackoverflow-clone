@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { RegisterLoginService } from 'src/app/services/register-login.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { RegisterLoginService } from 'src/app/services/register-login.service';
 })
 export class RegistrationComponent {  
     
-  constructor(private _registerlogin:RegisterLoginService,private router:Router){}
+  constructor(private _registerlogin:RegisterLoginService,private router:Router,private toastrService:ToastrService){}
   ngOnInit(){
     this.Registeration()
   }
@@ -32,7 +33,10 @@ export class RegistrationComponent {
       ]),
       password: new FormControl('', [
         Validators.required,
-        Validators.minLength(8)
+        Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}'),
+        Validators.minLength(8),
+        
+
       ]),
       confirm_password: new FormControl('', [
         Validators.required,
@@ -56,6 +60,7 @@ export class RegistrationComponent {
             if(Register_res){
               console.log("Register_res",Register_res)
               sessionStorage.setItem("Register_User",JSON.stringify(this.Register.value))
+        this.toastrService.success('Register Successfully ', Register_res.username);
               this.router.navigate(['/front/users/login'])
             }
           })
@@ -75,6 +80,10 @@ export class RegistrationComponent {
     
           return password === confirmPassword ? null : { matchPassword: { value: control.value } };
         };
+      }
+      isFieldValid(field: string) {
+        const control = this.Register.get(field);
+        return !control.valid && control.touched;
       }
       
     }

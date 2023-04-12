@@ -32,5 +32,20 @@
       "username": "dutt2",
       "id": 4
     }
+  ],
+  "questions": [
+    {
+      "userId": 4,
+      "title": "Dutt mistry ",
+      "body": "esrtfyuiopysdguifdsfhuihjdfxghjgghj",
+      "createdAt": "2023-04-12T11:08:07.253Z",
+      "tags": [
+        "Dutt",
+        "mistry",
+        ""
+      ],
+      "answers": [],
+      "id": 1
+    }
   ]
 }

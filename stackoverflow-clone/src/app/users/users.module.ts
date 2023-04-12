@@ -6,8 +6,10 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-
+import { BrowserModule } from '@angular/platform-browser';
 @NgModule({
   declarations: [
     UserProfileComponent,
@@ -18,7 +20,14 @@ import { LoginComponent } from './login/login.component';
     CommonModule,
     UsersRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      positionClass: 'toast-bottom-center',
+      preventDuplicates: true,
+      tapToDismiss:true,
+      progressAnimation:'decreasing'
+    }),
   ]
 })
 export class UsersModule { }

@@ -8,6 +8,8 @@ const routes: Routes = [
   {path:'home',component:HomeComponent},
 {path:'users',
 loadChildren: () => import('./users/users.module').then(m => m.UsersModule)},
+{path:'question',
+loadChildren: () => import('./moules/question/question.module').then(m => m.QuestionModule)},
 
 {path:'**',component:ErrorPageComponent}
 ]

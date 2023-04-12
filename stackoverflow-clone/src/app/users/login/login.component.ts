@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { RegisterLoginService } from 'src/app/services/register-login.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { RegisterLoginService } from 'src/app/services/register-login.service';
 })
 export class LoginComponent {
 
-  constructor(private _registerlogin:RegisterLoginService,private router:Router){}
+  constructor(private _registerlogin:RegisterLoginService,private router:Router,private toastrService:ToastrService){}
 invalid:any
     ngOnInit() {
       this.User_Login_Form();
@@ -44,6 +45,7 @@ invalid:any
     if(Register_res_get){
       if((Register_res_get.username==this.user_login.value.username) && (Register_res_get.password==this.user_login.value.password)){
         this._registerlogin.get_Login_data(this.user_login.value)
+        this.toastrService.success('Login Successfully', this.user_login.value.username);
         this.router.navigate(['/home']);  
         // this._RegisterService.Change_btn(this.Login_Logout_msg)
         // let btn=this._RegisterService.Change_btn(this.Login_Logout_msg)

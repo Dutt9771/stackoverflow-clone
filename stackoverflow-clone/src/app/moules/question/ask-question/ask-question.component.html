@@ -1,0 +1,86 @@
+<!-- <form action="">
+
+     <input type="text" placeholder="Enter Title Of Question">
+     <textarea name="text" id="text" cols="30" rows="10"></textarea>
+     <button type="submit" (click)="Save_Question()">Save</button>
+</form> -->
+
+   
+<div class="row g-3 m-lg-5 d-flex justify-content-center">
+    <div class="row g-2 justify-content-end w-10">
+<div
+class="text-center my-3 d-flex justify-content-center align-items-center"
+>
+<div>
+  <p id="product_list_text" class="card-title fs-1 fw-bolder">Add Question</p>
+</div>
+</div>
+<!-- <button type="button" (click)="Ask_Question()">Ask Question</button> -->
+
+<form
+class="row g-1 d-flex justify-content-center"
+[formGroup]="question_form"
+(ngSubmit)="Save_Question()"
+novalidate
+>
+<div class="row g-2 d-flex justify-content-center">
+<div class="col-md-5">
+    <div class="form-floating mb-3">
+        <input
+        type="text" class="form-control" id="floatingInput" formControlName="title" placeholder="Enter Title" />
+        <label for="floatingInput">Title</label>
+      </div>
+      
+</div>
+</div>
+<div
+*ngIf="get_question.title.touched && get_question.title.invalid"
+class="text-danger text-center"
+>
+<div
+  *ngIf="get_question.title.errors?.['required']"
+  class="text-danger"
+>
+  Title Must Required
+</div>
+</div>
+<div class="row g-3 d-flex justify-content-center">
+<div class="col-md-5">
+  <div class="form-floating">
+    <textarea class="form-control" placeholder="Enter Description" id="floatingTextarea" formControlName="description" cols="30" rows="10"></textarea>
+    <label for="floatingTextarea">Description</label>
+  </div>
+</div>
+<div
+  *ngIf="get_question.description.touched && get_question.description.invalid"
+  class="text-danger text-center"
+>
+  <div
+    *ngIf="get_question.description.errors?.['required']"
+    class="text-danger"
+  >
+    description Must Required
+  </div>
+  <div
+    *ngIf="get_question.description.errors?.['minlength']"
+    class="text-danger"
+  >
+    description Should be 30 Character
+  </div>
+</div>
+</div>
+<div class="col-10 text-center" *ngIf="!question_form.valid">
+  <span class="text-danger">Please Enter All Field</span>
+</div>
+<!-- <div class="col-10 text-center">
+  <span class="text-danger">{{invalid}}</span>
+</div> -->
+<div class="row g-2 d-flex justify-content-center">
+<div class="d-grid col-3 col-md-3 mx-auto d-flex justify-content-center">
+  <button type="submit" [disabled]="!question_form.valid" class="btn btn-primary col-md-5 text-center">Add Question</button>
+</div>
+</div>
+
+</form>
+</div>
+</div>

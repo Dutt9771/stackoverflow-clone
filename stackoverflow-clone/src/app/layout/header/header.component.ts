@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +11,7 @@ export class HeaderComponent {
   btn:any="Login";
   username="Login/Register";
   Registered_User:boolean=true;
-  constructor(private router:Router){
+  constructor(private router:Router,private toastrService:ToastrService){
     this.router.events.subscribe((Res:any)=>{
       if(Res){
         if(Res.url){
@@ -37,6 +38,7 @@ export class HeaderComponent {
   Logout_click(){
     sessionStorage.removeItem("Login_User")
     sessionStorage.removeItem("Register_User")
+    this.toastrService.success('Successfully Logout');
     this.router.navigate(["/home"])
   }
 }

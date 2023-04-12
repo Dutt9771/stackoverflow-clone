@@ -1,4 +1,5 @@
 export const environment = {
     baseurl:"http://localhost:3000/",
-    register:"Register"
+    register:"Register",
+    question:"questions"
 };
