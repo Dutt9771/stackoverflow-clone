@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { SearchService } from 'src/app/services/search.service';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +12,7 @@ export class HeaderComponent {
   btn:any="Login";
   username="Login/Register";
   Registered_User:boolean=true;
-  constructor(private router:Router,private toastrService:ToastrService){
+  constructor(private router:Router,private toastrService:ToastrService,private _searchService:SearchService){
     this.router.events.subscribe((Res:any)=>{
       if(Res){
         if(Res.url){
@@ -35,6 +36,12 @@ export class HeaderComponent {
       }
     })
   }
+  query: string = '';
+  
+    onSearchClick(): void {
+      this._searchService.setSearchQuery(this.query);
+      this.router.navigate(["/question/questions"])
+    }
   Logout_click(){
     sessionStorage.removeItem("Login_User")
     sessionStorage.removeItem("Register_User")

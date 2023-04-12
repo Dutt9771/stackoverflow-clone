@@ -5,10 +5,11 @@
         <div class="card w-auto" *ngFor="let item of questions">
             <div class="card-header">
                 {{item.title}}
-            </div>
-            <div class="card-body">
+                <img [src]="source" (click)="myFunction()" width="20" height="20" class="float-end"/>
+              </div>
+              <div class="card-body">
                 <blockquote class="blockquote mb-0">
-                    <footer class="blockquote-footer">{{item.body}}</footer>
+                  <footer class="blockquote-footer">{{item.body}} </footer>
                 </blockquote>
             </div>
             <div class="card-header" *ngIf="item.answers" >
@@ -18,6 +19,11 @@
               <blockquote class="blockquote mb-0">
                 <footer class="blockquote-footer">{{answer.body}}</footer>
               </blockquote>
+              <!-- Add icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- Use an element to toggle between a like/dislike icon -->
+
             </div>
           </div>
         </div>

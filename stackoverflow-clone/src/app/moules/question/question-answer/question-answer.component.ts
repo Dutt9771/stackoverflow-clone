@@ -24,6 +24,35 @@ router.paramMap.subscribe((params)=>{
     this.User_Answer_Form()
     this.Show_Questions()
   }
+  // votes(x:any,y:any){
+  //   this._questionsService.get_Question_data().subscribe({next:(get_question_res:any)=>{
+  //     if(get_question_res){
+  //       this.questions=get_question_res
+  //       this.questions=this.questions.find((Question:any)=>Question.id===this.Question_id)
+  //       console.log("Question",this.questions)
+  //       // Question.votes=Question.votes+x
+  //       // if(Question.votes>0){
+  //       //   Question.votes=Question.votes-y
+  //       // }
+  //       // this._questionsService.votes(this.Question_id,Question).subscribe({next:(votes_res:any)=>{
+  //       //   console.log("votes_res",votes_res)
+  //       // },error:(votes_error:any)=>{
+  //       //   console.log("votes_error",votes_error)
+  //       // }})
+  //     }
+  //   }})
+  // }
+  source: any="https://img.icons8.com/material-sharp/48/000000/thumb-up.png"
+  myFunction(){
+  //   console.log("cliked")
+  //   if(this.source=="https://img.icons8.com/material-sharp/48/null/thumb-up.png"){
+  //     this.source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAABM0lEQVR4nO2ZQUrEQBREy70I6pzAhXt14QHEuYUrwfyf4BU8gXgEzyAjrjzD4ErBQzjqAWZKWhAdjHFGBX8xv6BWIfBeutMh3UBmkeLcgfMah1yDKPwITsI4RMN1SMK/1XiDI/YQPjV34Xyagn/vKeSe/PQoHCBsGm53wpc23ERg+IdO+HIdXIIofOkVhOFLTyAMX9qHMPwEzlWEiHFrTviyfN5BFt5fBc514Z1ExSrCV3b0I/i/6q/zn/DeJjDvDSnAHIGcQsiXmAu6ChnH2gLOS3WBvq6A8b79V1RFwFl/hlcRMD7jmCvKAmft8BoCk+59pOgCxsHX8AoCFfd1BaxsAny3ixdbwLvhIwsYH1FzWVfAZz1DiChgHMO5oSxwMRt8VIGae8oCtzEPQDKZTAYf8gIS92F92ggD3QAAAABJRU5ErkJggg=="
+  //     this.votes(1,0)
+  //   }else{
+  //     this.source="https://img.icons8.com/material-sharp/48/null/thumb-up.png"
+  //     this.votes(0,1)
+  //   }
+  }
     Show_Questions(){
   
   this._questionsService.get_Question_data().subscribe({next:(get_question_res:any)=>{

@@ -15,20 +15,52 @@
     </div> -->
     
     <div class="row g-3 m-lg-5 d-flex justify-content-center">
-          <div class="row w-auto mt-auto" *ngFor="let question of questions">   
+          <div class="row w-auto mt-auto" >   
             <h3>All Questions</h3>
-              <hr>
-            <div class="col d-flex">
-                <div class="col-md-7 d-flex-col" [routerLink]="['/question/question-answer',question.id,question.title]" style="cursor: pointer;">   
-                        <div> {{question.votes}} votes</div>
-                        <div> {{question.answers.length}} answers</div>
-                        <div> {{question.views}} views</div>
-                </div>
-                <div class="col-md-10 d-flex-col" [routerLink]="['/question/question-answer',question.id,question.title]" style="cursor: pointer;">
-                    <div><a class="text-decoration-none text-dark" href="">{{question.title}}</a></div>
-                    <div>{{question.description}}</div>
-                    Tags:-<p *ngFor="let item of question.tags" class="bg-body-tertiary d-flex">{{item}}</p>
-                </div>
+            <div class="row" *ngFor="let question of questions">
+                <div class="row" *ngIf="!Search">
+    <hr>
+
+    <div class="col d-flex" >
+        <div class="col-md-7 d-flex-col" [routerLink]="['/question/question-answer',question.id,question.title]" style="cursor: pointer;">   
+            <div> {{question.votes}} votes</div>
+            <div> {{question.answers.length}} answers</div>
+            <div> {{question.views}} views</div>
+        </div>
+        <div class="col-md-10 d-flex-col" [routerLink]="['/question/question-answer',question.id,question.title]" style="cursor: pointer;">
+            <div><a class="text-decoration-none text-dark" href="">{{question.title}}</a></div>
+            <div>{{question.description}}</div>
+          </div>
+            </div>
+    </div>
+    <div class="row d-flex mt-2" *ngIf="!Search">
+    <div class="col">Tags:-</div>
+    <div class="col-md-2 w-auto bg-info me-2" *ngFor="let item of question.tags" ><span *ngIf="question.tags.length">{{item.name}}</span></div>
+    </div>
+    
+            </div>
+
+
+            <div class="row" *ngFor="let question of ItemShowTagwise">
+                <div class="row" *ngIf="Search">
+    <hr>
+
+    <div class="col d-flex" >
+        <div class="col-md-7 d-flex-col" [routerLink]="['/question/question-answer',question.id,question.title]" style="cursor: pointer;">   
+            <div> {{question.votes}} votes</div>
+            <div> {{question.answers.length}} answers</div>
+            <div> {{question.views}} views</div>
+        </div>
+        <div class="col-md-10 d-flex-col" [routerLink]="['/question/question-answer',question.id,question.title]" style="cursor: pointer;">
+            <div><a class="text-decoration-none text-dark" href="">{{question.title}}</a></div>
+            <div>{{question.description}}</div>
+          </div>
+            </div>
+    </div>
+    <div class="row d-flex mt-2" *ngIf="Search">
+    <div class="col">Tags:-</div>
+    <div class="col-md-2 w-auto bg-info me-2" *ngFor="let item of question.tags" ><span *ngIf="question.tags.length">{{item.name}}</span></div>
+    </div>
     
             </div>
         </div>

@@ -41,9 +41,12 @@
       "body": "esrtfyuiopysdguifdsfhuihjdfxghjgghj",
       "createdAt": "2023-04-12T11:08:07.253Z",
       "tags": [
-        "Dutt",
-        "mistry",
-        ""
+        {
+          "name": "Dutt"
+        },
+        {
+          "name": "mistry"
+        }
       ],
       "votes": 0,
       "views": 0,
@@ -73,6 +76,24 @@
           "createdAt": "2023-04-12T13:02:09.951Z"
         }
       ]
+    },
+    {
+      "userId": 3,
+      "title": "Instal window 10 in pc",
+      "body": "qwertyuiopasdfghjkl;zxcvbnm,.sdfghjkl",
+      "createdAt": "2023-04-12T16:51:16.173Z",
+      "tags": [
+        {
+          "name": "windows 10"
+        },
+        {
+          "name": "boot"
+        }
+      ],
+      "votes": 0,
+      "views": 0,
+      "answers": [],
+      "id": 2
     }
   ]
 }

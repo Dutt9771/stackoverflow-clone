@@ -12,7 +12,8 @@ import { QuestionModule } from './moules/question/question.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import {MatChipsModule} from '@angular/material/chips';
-import {MatFormFieldModule} from '@angular/material/form-field'
+import {MatFormFieldModule} from '@angular/material/form-field';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +26,7 @@ import {MatFormFieldModule} from '@angular/material/form-field'
     BrowserAnimationsModule,
     AppRoutingModule,
     UsersModule,
+    FormsModule,
     HttpClientModule,
     MatChipsModule,
     MatFormFieldModule,

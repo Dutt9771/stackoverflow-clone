@@ -26,7 +26,7 @@ this.User_Question_Form()
 
   addOnBlur = true;
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
-  fruits: Fruit[] = [{name: 'Lemon'}, {name: 'Lime'}, {name: 'Apple'}];
+  fruits: Fruit[] = [];
 
   add(event: MatChipInputEvent): void {
     const value = (event.value || '').trim();
@@ -81,7 +81,8 @@ this.User_Question_Form()
    
     Tags:any=[]
   Save_Question(){
-    if(this.question_form.valid)
+    
+    if(this.question_form.valid && this.fruits.length){
     this._registerlogin.get_Register_data().subscribe((Register_res:any)=>{
       if(Register_res){
         let Login_User=JSON.parse(sessionStorage.getItem("Login_User"))
@@ -102,7 +103,7 @@ this.User_Question_Form()
             "title": this.question_form.value.title,
             "body": this.question_form.value.description,
             "createdAt": new Date(),
-            "tags":this.Tags,
+            "tags":this.fruits,
             "votes":0,
             "views":0,
             "answers": []
@@ -117,7 +118,11 @@ this.User_Question_Form()
       }
       
     })
+  }else{
+    this.toastr.error("Please Enter All Field")
+
   }
+}
   Ask_Question(){
     // this._question.
   }

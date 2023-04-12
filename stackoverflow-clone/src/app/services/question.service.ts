@@ -28,18 +28,26 @@ export class QuestionService {
     }
 
   }
-  post_Answer_data(customerId: number,data:any){
+  post_Answer_data(userid: number,data:any){
     try {
-          return this.http.get(this.baseurl+this.question+"/"+customerId).pipe(
+          return this.http.get(this.baseurl+this.question+"/"+userid).pipe(
             mergeMap((customer: any) => {
               const currentItemArray = customer.answers;
               currentItemArray.push(data);
     
-              return this.http.patch(this.baseurl+this.question+"/"+customerId, {
+              return this.http.patch(this.baseurl+this.question+"/"+userid, {
                 answers: currentItemArray
               });
             })
           );
+    } catch (error:any) {
+      return throwError(() => new Error(error))
+    }
+
+  }
+  votes(questionid: number,data:any){
+    try {
+      return this.http.put<Question>(this.baseurl+this.question+"/"+questionid,data)
     } catch (error:any) {
       return throwError(() => new Error(error))
     }

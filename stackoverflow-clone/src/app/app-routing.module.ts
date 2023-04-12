@@ -6,6 +6,7 @@ import { HomeComponent } from './shared/components/home/home.component';
 const routes: Routes = [
   {path:'',redirectTo:'home',pathMatch:'full'},
   {path:'home',component:HomeComponent},
+
 {path:'users',
 loadChildren: () => import('./users/users.module').then(m => m.UsersModule)},
 {path:'question',
