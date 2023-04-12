@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { RegisterLoginService } from 'src/app/services/register-login.service';
 
 @Component({
   selector: 'app-registration',
@@ -8,6 +9,7 @@ import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn,
 })
 export class RegistrationComponent {  
     
+  constructor(private _registerlogin:RegisterLoginService){}
   ngOnInit(){
     this.Registeration()
   }
@@ -46,9 +48,16 @@ export class RegistrationComponent {
         return this.Register.controls
       }
       Reg_click(){
+        if(this.Register.valid){
+
           console.log(this.Register.value)
-          
-    
+          this._registerlogin.post_Register_data(this.Register.value).subscribe((Register_res:any)=>{
+            if(Register_res){
+              console.log("Register_res",Register_res)
+            }
+          })
+        }
+
       }
       // matchPasswordValidator(): ValidatorFn {
       // return (control: AbstractControl): {[key: string]: any} | null => {

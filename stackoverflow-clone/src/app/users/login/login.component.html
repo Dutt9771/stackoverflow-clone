@@ -1,18 +1,12 @@
-<div class="card border-0 text-black">
-    <img
-      src="/assets/grocery_background.jpg"
-      alt=""
-      class="card-img w-100 h-auto opacity-25"
-      height="100"
-    />
+
+   
     <div
-      class="card-img-overlay text-center my-3 d-flex justify-content-center align-items-center"
+      class="text-center my-3 d-flex justify-content-center align-items-center"
     >
       <div>
         <p id="product_list_text" class="card-title fs-1 fw-bolder">Login</p>
       </div>
     </div>
-  </div>
   <form
     class="row g-3 d-flex justify-content-center"
     [formGroup]="user_login"
@@ -71,17 +65,17 @@
         </div>
       </div>
     </div>
-  
+    <div class="col-10 text-center" *ngIf="!user_login.valid">
+        <span class="text-danger">Please Enter All Field</span>
+      </div>
+    <div class="col-10 text-center">
+        <span class="text-danger">{{invalid}}</span>
+      </div>
     <div class="row g-2 d-flex justify-content-center">
       <div class="d-grid col-3 col-md-1 mx-auto">
-        <button type="submit" class="btn btn-primary">Login</button>
+        <button type="submit" [disabled]="!user_login.valid" class="btn btn-primary">Login</button>
       </div>
     </div>
-    <!-- <div class="row g-2 col-md-1 justify-content-center">
-          <div class="g-btn" *ngIf="!user">
-            <asl-google-signin-button  class="g-logo"></asl-google-signin-button>
-            <span>Google</span>
-              </div>
-            </div>   -->
+
   </form>
   
