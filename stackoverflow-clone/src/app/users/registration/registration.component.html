@@ -1,0 +1,60 @@
+
+<img src="https://stackoverflow.design/assets/img/logos/so/logo-stackoverflow.svg" alt="">
+<form class="row g-3 m-lg-5 d-flex justify-content-center" [formGroup]="Register" (ngSubmit)="Reg_click()" novalidate>
+
+  <div class="row g-2 justify-content-center">
+ 
+    <div class="col-md-5">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" formControlName="username" class="form-control" id="inputusername" placeholder="Enter Username">
+        <div *ngIf="get_Register.username.touched && get_Register.username.invalid" class="text-danger">
+            <div *ngIf="get_Register.username.errors?.['required']" class="text-danger">username Must Required</div>
+            </div>
+    </div>
+    <div class="col-md-5">
+        <label for="Name" class="form-label">Name</label>
+        <input type="text" formControlName="name"  class="form-control" id="Name" placeholder="Enter Name">
+        <div *ngIf="get_Register.name.touched && get_Register.name.invalid" class="text-danger">
+            <div *ngIf="get_Register.name.errors?.['required']" class="text-danger">Name Must Required</div>
+            <div *ngIf="get_Register.name.errors?.['minlength']" class="text-danger">Name MustShould be 2 Character</div></div>
+    </div>
+        </div>
+  <div class="row g-2 justify-content-center">
+      <div class="col-md-10">
+          <label for="inputEmail4" class="form-label">Email</label>
+          <input type="email" formControlName="email" class="form-control" id="inputEmail4" placeholder="Enter Email">
+          <div *ngIf="get_Register.email.touched && get_Register.email.invalid" class="text-danger">
+          <div *ngIf="get_Register.email.errors?.['required']" class="text-danger">Email Must Required</div>
+          <div *ngIf="get_Register.email.errors?.['email']" class="text-danger">Please Enter Valid Email</div></div>
+        </div>
+    </div>
+  <div class="row g-2 justify-content-center">
+
+      <div class="col-md-5">
+          <label for="inputPassword4" class="form-label">Password</label>
+          <input type="password" formControlName="password" class="form-control" id="inputPassword4" placeholder="Enter Password">
+          <div *ngIf="get_Register.password.touched && get_Register.password.invalid" class="text-danger">
+              <div *ngIf="get_Register.password.errors?.['required']" class="text-danger">Password Must Required</div>
+              <div *ngIf="get_Register.password.errors?.['minlength']" class="text-danger">Password MustShould be 8 Character</div></div>
+        </div>
+        <div class="col-md-5">
+            <label for="inputPassword4" class="form-label">Confirm Password</label>
+            <input type="password" formControlName="confirm_password" class="form-control" id="inputPassword4" placeholder="Enter Confirm Password">
+            <div *ngIf="get_Register.confirm_password.touched && get_Register.confirm_password.invalid" class="text-danger">
+                <div *ngIf="get_Register.confirm_password.errors?.['required']" class="text-danger">Confirm Password Must Required</div>
+                <div *ngIf="get_Register.confirm_password.errors?.['minlength']" class="text-danger">Confirm Password MustShould be 8 Character</div>
+                <div *ngIf="get_Register.confirm_password.errors?.matchPassword">Confirm Password does not match Password.</div></div>
+        </div>
+            </div>
+<div>
+    
+</div>
+    
+    <div class="col-10 text-center" *ngIf="!Register.valid">
+      <span class="text-danger">Please Enter All Field</span>
+    </div>
+    <div class="d-grid gap-2 col-10 d-md-block text-center">
+      <button type="submit" [disabled]="!Register.valid" class="btn btn-primary col-md-2 text-center">Sign in</button>
+    </div>
+
+  </form>
