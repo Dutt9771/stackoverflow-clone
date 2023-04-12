@@ -13,10 +13,10 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     let Login_User=JSON.parse(sessionStorage.getItem("Login_User"))
     if(Login_User){
-      return true;
+      return false;
     }else{
       this.toastr.error("Please Login")
-      return false
+      return true
     }
   }
   
