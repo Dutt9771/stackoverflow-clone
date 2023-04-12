@@ -71,9 +71,9 @@ class="text-danger text-center"
 </div>
 <div class="row g-3 d-flex justify-content-center">
 
-    <mat-form-field class="example-chip-list" appearance="fill">
-        <mat-label>Favorite Fruits</mat-label>
-    <mat-chip-grid #chipGrid aria-label="Enter fruits">
+    <mat-form-field class="example-chip-list col-md-5" appearance="fill">
+        <mat-label>Tags</mat-label>
+    <mat-chip-grid #chipGrid aria-label="Enter Tags">
       <mat-chip-row *ngFor="let fruit of fruits"
                     (removed)="remove(fruit)"
                     [editable]="true"
@@ -84,7 +84,7 @@ class="text-danger text-center"
           <mat-icon>cancel</mat-icon>
         </button>
       </mat-chip-row>
-      <input placeholder="Add Tags"
+      <input placeholder="Enter for Add Tags"
              [matChipInputFor]="chipGrid"
              [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
              [matChipInputAddOnBlur]="addOnBlur"

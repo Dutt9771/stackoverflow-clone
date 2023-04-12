@@ -49,7 +49,7 @@
         }
       ],
       "votes": 0,
-      "views": 0,
+      "views": 12,
       "answers": [
         {
           "id": 1,
@@ -91,9 +91,33 @@
         }
       ],
       "votes": 0,
-      "views": 0,
+      "views": 4,
       "answers": [],
       "id": 2
+    },
+    {
+      "userId": 3,
+      "title": "Update window 7 to windows 10",
+      "body": "How to update windows 7 to window 10",
+      "createdAt": "2023-04-12T18:16:36.876Z",
+      "tags": [
+        {
+          "name": "window update"
+        },
+        {
+          "name": "window 7"
+        },
+        {
+          "name": "windows 10"
+        },
+        {
+          "name": "Update windows"
+        }
+      ],
+      "votes": 0,
+      "views": 1,
+      "answers": [],
+      "id": 3
     }
   ]
 }

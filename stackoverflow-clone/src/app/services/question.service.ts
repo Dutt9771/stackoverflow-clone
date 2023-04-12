@@ -45,6 +45,23 @@ export class QuestionService {
     }
 
   }
+  Views(userid: number,data:any){
+    try {
+          return this.http.get(this.baseurl+this.question+"/"+userid).pipe(
+            mergeMap((customer: any) => {
+              const currentItemArray = customer.views;
+              // currentItemArray.push(data);
+    
+              return this.http.patch(this.baseurl+this.question+"/"+userid, {
+                views: currentItemArray+1
+              });
+            })
+          );
+    } catch (error:any) {
+      return throwError(() => new Error(error))
+    }
+
+  }
   votes(questionid: number,data:any){
     try {
       return this.http.put<Question>(this.baseurl+this.question+"/"+questionid,data)

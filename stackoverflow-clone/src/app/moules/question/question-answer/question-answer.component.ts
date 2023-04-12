@@ -24,6 +24,80 @@ router.paramMap.subscribe((params)=>{
     this.User_Answer_Form()
     this.Show_Questions()
   }
+  views:any=0
+  Views_In_Localstorage(){
+    let cart_Arr: any = [];
+    if (localStorage.getItem('Views')) {
+      let Merge = JSON.parse(localStorage.getItem('Views'));
+      cart_Arr = Merge.find((user: any) => user.id == this.Question_id);
+      // console.log('Cart_Arr', cart_Arr);
+      let cart = {
+        id: this.Question_id,
+        views: false,
+      };
+      if (!cart_Arr) {
+        console.log('this.Question_id', this.Question_id);
+        console.log('Views', cart);
+        let Arr = JSON.stringify([]);
+        if (!localStorage.getItem('Views')) {
+          localStorage.setItem('Views', Arr);
+        }
+
+        let Merge = JSON.parse(localStorage.getItem('Views'));
+        Merge.push(cart);
+        console.log('Merge', Merge);
+        localStorage.setItem('Views', JSON.stringify(Merge));
+        // localStorage.setItem("Cart",JSON.stringify(cart))
+      }else{
+        let Merge = JSON.parse(localStorage.getItem('Views'));
+        let duplicate = Merge.find((user: any) => user.id == this.Question_id);
+        if(!duplicate){
+
+          Merge.push(cart);
+          console.log('Merge', Merge);
+          localStorage.setItem('Views', JSON.stringify(Merge));
+        }
+      }
+    }else {
+        let cart = {
+          id: this.Question_id,
+          views: false,
+        };
+        if (!cart_Arr.length) {
+          console.log('username', this.Question_id);
+          console.log('cart', cart);
+          let Arr = JSON.stringify([]);
+          if (!localStorage.getItem('Views')) {
+            localStorage.setItem('Views', Arr);
+          }
+  
+          let Merge = JSON.parse(localStorage.getItem('Views'));
+          Merge.push(cart);
+          console.log('Merge', Merge);
+          localStorage.setItem('Views', JSON.stringify(Merge));
+          // localStorage.setItem("Cart",JSON.stringify(cart))
+        }
+      }
+  }
+  ngAfterViewInit(){
+    this.Views_In_Localstorage()
+    this.views
+    let Merge = JSON.parse(localStorage.getItem('Views'));
+    let view_Obj = Merge.find((user: any) => user.id == this.Question_id);
+    if(Merge){
+      if(view_Obj.views==false){
+        
+        this._questionsService.Views(this.Question_id,this.views).subscribe({next:(views_res:any)=>{
+          console.log("views_res",views_res)
+          view_Obj.views=true
+          console.log('Merge', Merge);
+          localStorage.setItem('Views', JSON.stringify(Merge));
+        },error:(views_err:any)=>{
+          console.log("views_err",views_err)
+        }})
+      }
+      }
+  }
   // votes(x:any,y:any){
   //   this._questionsService.get_Question_data().subscribe({next:(get_question_res:any)=>{
   //     if(get_question_res){
@@ -58,8 +132,10 @@ router.paramMap.subscribe((params)=>{
   this._questionsService.get_Question_data().subscribe({next:(get_question_res:any)=>{
     if(get_question_res){
       this.questions=get_question_res
-      this.questions.filter((Question:any)=>Question.id===this.Question_id)
+      console.log("Question-id",this.Question_id)
+      this.questions=this.questions.filter((Question:any)=>Question.id==this.Question_id)
       console.log("get_question_res",get_question_res)
+      console.log("this.questions",this.questions)
       // for(let i=0;i<this.questions.length;i++){
       //   let arr=this.questions[i].title.split(" ")
       //   for(let item of arr){
