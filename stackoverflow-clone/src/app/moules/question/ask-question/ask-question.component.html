@@ -39,7 +39,7 @@ class="text-danger text-center"
 >
 <div
   *ngIf="get_question.title.errors?.['required']"
-  class="text-danger"
+  class="text-danger" 
 >
   Title Must Required
 </div>
@@ -47,31 +47,55 @@ class="text-danger text-center"
 <div class="row g-3 d-flex justify-content-center">
 <div class="col-md-5">
   <div class="form-floating">
-    <textarea class="form-control" placeholder="Enter Description" id="floatingTextarea" formControlName="description" cols="30" rows="10"></textarea>
+    <textarea class="form-control" placeholder="Enter Description" id="floatingTextarea" formControlName="description" cols="30" rows="10" ></textarea>
     <label for="floatingTextarea">Description</label>
+    <div
+      *ngIf="get_question.description.touched && get_question.description.invalid"
+      class="text-danger text-center"
+    >
+      <div
+        *ngIf="get_question.description.errors?.['required']"
+        class="text-danger"
+      >
+        description Must Required
+      </div>
+      <div
+        *ngIf="get_question.description.errors?.['minlength']"
+        class="text-danger"
+      >
+        description Should be 30 Character
+      </div>
+    </div>
   </div>
 </div>
-<div
-  *ngIf="get_question.description.touched && get_question.description.invalid"
-  class="text-danger text-center"
->
-  <div
-    *ngIf="get_question.description.errors?.['required']"
-    class="text-danger"
-  >
-    description Must Required
-  </div>
-  <div
-    *ngIf="get_question.description.errors?.['minlength']"
-    class="text-danger"
-  >
-    description Should be 30 Character
-  </div>
 </div>
+<div class="row g-3 d-flex justify-content-center">
+
+    <mat-form-field class="example-chip-list" appearance="fill">
+        <mat-label>Favorite Fruits</mat-label>
+    <mat-chip-grid #chipGrid aria-label="Enter fruits">
+      <mat-chip-row *ngFor="let fruit of fruits"
+                    (removed)="remove(fruit)"
+                    [editable]="true"
+                    (edited)="edit(fruit, $event)"
+                    [aria-description]="'press enter to edit ' + fruit.name">
+        {{fruit.name}}
+        <button matChipRemove [attr.aria-label]="'remove ' + fruit.name">
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip-row>
+      <input placeholder="Add Tags"
+             [matChipInputFor]="chipGrid"
+             [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+             [matChipInputAddOnBlur]="addOnBlur"
+             (matChipInputTokenEnd)="add($event)"/>
+    </mat-chip-grid>
+  </mat-form-field>
 </div>
 <div class="col-10 text-center" *ngIf="!question_form.valid">
   <span class="text-danger">Please Enter All Field</span>
 </div>
+
 <!-- <div class="col-10 text-center">
   <span class="text-danger">{{invalid}}</span>
 </div> -->
@@ -80,7 +104,6 @@ class="text-danger text-center"
   <button type="submit" [disabled]="!question_form.valid" class="btn btn-primary col-md-5 text-center">Add Question</button>
 </div>
 </div>
-
 </form>
 </div>
 </div>

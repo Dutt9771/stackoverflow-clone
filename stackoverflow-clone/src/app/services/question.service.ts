@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { throwError } from 'rxjs';
+import { mergeMap, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 import { Question } from '../models/question';
 
@@ -23,6 +23,23 @@ export class QuestionService {
   get_Question_data(){
     try {
       return this.http.get(this.baseurl+this.question)
+    } catch (error:any) {
+      return throwError(() => new Error(error))
+    }
+
+  }
+  post_Answer_data(customerId: number,data:any){
+    try {
+          return this.http.get(this.baseurl+this.question+"/"+customerId).pipe(
+            mergeMap((customer: any) => {
+              const currentItemArray = customer.answers;
+              currentItemArray.push(data);
+    
+              return this.http.patch(this.baseurl+this.question+"/"+customerId, {
+                answers: currentItemArray
+              });
+            })
+          );
     } catch (error:any) {
       return throwError(() => new Error(error))
     }

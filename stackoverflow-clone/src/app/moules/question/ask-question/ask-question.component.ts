@@ -4,7 +4,12 @@ import { ToastrService } from 'ngx-toastr';
 import { Question } from 'src/app/models/question';
 import { QuestionService } from 'src/app/services/question.service';
 import { RegisterLoginService } from 'src/app/services/register-login.service';
+import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import {MatChipEditedEvent, MatChipInputEvent} from '@angular/material/chips';
 
+export interface Fruit {
+  name: string;
+}
 @Component({
   selector: 'app-ask-question',
   templateUrl: './ask-question.component.html',
@@ -19,6 +24,45 @@ export class AskQuestionComponent {
 this.User_Question_Form()
   }
 
+  addOnBlur = true;
+  readonly separatorKeysCodes = [ENTER, COMMA] as const;
+  fruits: Fruit[] = [{name: 'Lemon'}, {name: 'Lime'}, {name: 'Apple'}];
+
+  add(event: MatChipInputEvent): void {
+    const value = (event.value || '').trim();
+
+    // Add our fruit
+    if (value) {
+      this.fruits.push({name: value});
+    }
+
+    // Clear the input value
+    event.chipInput!.clear();
+  }
+
+  remove(fruit: Fruit): void {
+    const index = this.fruits.indexOf(fruit);
+
+    if (index >= 0) {
+      this.fruits.splice(index, 1);
+    }
+  }
+
+  edit(fruit: Fruit, event: MatChipEditedEvent) {
+    const value = event.value.trim();
+
+    // Remove fruit if it no longer has a name
+    if (!value) {
+      this.remove(fruit);
+      return;
+    }
+
+    // Edit existing fruit
+    const index = this.fruits.indexOf(fruit);
+    if (index >= 0) {
+      this.fruits[index].name = value;
+    }
+  }
   
   question_form:any
  
@@ -59,7 +103,10 @@ this.User_Question_Form()
             "body": this.question_form.value.description,
             "createdAt": new Date(),
             "tags":this.Tags,
+            "votes":0,
+            "views":0,
             "answers": []
+
           }
           this._questioservice.post_Question_data(this.body).subscribe({next:(Add_question_res:any)=>{
             console.log("Add_question_res",Add_question_res)

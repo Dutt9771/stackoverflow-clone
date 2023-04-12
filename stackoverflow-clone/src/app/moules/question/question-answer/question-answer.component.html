@@ -1,0 +1,95 @@
+
+<div class="row g-3 m-lg-5 d-flex justify-content-center">
+    <div class="row g-2 justify-content-center w-10">
+        
+        <div class="card w-auto" *ngFor="let item of questions">
+            <div class="card-header">
+                {{item.title}}
+            </div>
+            <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                    <footer class="blockquote-footer">{{item.body}}</footer>
+                </blockquote>
+            </div>
+            <div class="card-header" *ngIf="item.answers" >
+                Answer
+            </div>
+            <div class="card-body"  *ngFor="let answer of item.answers">
+              <blockquote class="blockquote mb-0">
+                <footer class="blockquote-footer">{{answer.body}}</footer>
+              </blockquote>
+            </div>
+          </div>
+        </div>
+        </div>
+
+        <!-- <div class="row g-3 m-lg-5 d-flex justify-content-center">
+            <div class="row w-auto mt-auto" *ngFor="let question of questions">   
+              <h3>All Questions</h3>
+                <hr>
+              <div class="col d-flex">
+                  <div class="col-md-7 d-flex-col" [routerLink]="['/question/question-answer',question.id,question.title]" style="cursor: pointer;">   
+                          <div> {{question.votes}} votes</div>
+                          <div> {{question.answers.length}} answers</div>
+                          <div> {{question.views}} views</div>
+                  </div>
+                  <div class="col-md-10 d-flex-col" [routerLink]="['/question/question-answer',question.id,question.title]" style="cursor: pointer;">
+                      <div><a class="text-decoration-none text-dark" href="">{{question.title}}</a></div>
+                      <div>{{question.description}}</div>
+                      <div>{{question.tags}}</div>
+                  </div>
+      
+              </div>
+          </div>
+                      </div> -->
+        <div class="row g-3 m-lg-5 d-flex justify-content-center">
+            <div class="row g-2 justify-content-end w-10">
+        <div
+        class="text-center my-3 d-flex justify-content-center align-items-center"
+        >
+        <div>
+          <p id="product_list_text" class="card-title fs-1 fw-bolder">Add Answer</p>
+        </div>
+        </div>
+        <!-- <button type="button" (click)="Ask_Question()">Ask Question</button> -->
+        
+        <form
+        class="row g-1 d-flex justify-content-center"
+        [formGroup]="answer_form"
+        (ngSubmit)="Save_Answer()"
+        novalidate
+        >
+        
+        <div class="row g-3 d-flex justify-content-center">
+        <div class="col-md-5">
+          <div class="form-floating">
+            <textarea class="form-control" placeholder="Enter Description" id="floatingTextarea" formControlName="description" cols="30" rows="10" ></textarea>
+            <label for="floatingTextarea">Description</label>
+            <div
+              *ngIf="get_question.description.touched && get_question.description.invalid"
+              class="text-danger text-center"
+            >
+              <div
+                *ngIf="get_question.description.errors?.['required']"
+                class="text-danger"
+              >
+                description Must Required
+              </div>
+              <div
+                *ngIf="get_question.description.errors?.['minlength']"
+                class="text-danger"
+              >
+                description Should be 30 Character
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+        <div class="row g-2 d-flex justify-content-center">
+            <div class="d-grid col-3 col-md-3 mx-auto d-flex justify-content-center">
+              <button type="submit" [disabled]="!answer_form.valid" class="btn btn-primary col-md-5 text-center">Add Answer</button>
+            </div>
+            </div>
+        </form>
+    </div>
+    </div>

@@ -11,7 +11,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { QuestionModule } from './moules/question/question.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
-
+import {MatChipsModule} from '@angular/material/chips';
+import {MatFormFieldModule} from '@angular/material/form-field'
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +26,8 @@ import { CommonModule } from '@angular/common';
     AppRoutingModule,
     UsersModule,
     HttpClientModule,
+    MatChipsModule,
+    MatFormFieldModule,
     
     ToastrModule.forRoot({
       timeOut: 3000,

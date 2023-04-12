@@ -1,16 +1,35 @@
 
-<div class="row g-3 m-lg-5 d-flex justify-content-center">
-    <div class="row g-2 justify-content-end w-10">
-        
-        <div class="card w-auto" *ngFor="let item of questions">
-            <div class="card-header">
+
+
+        <!-- <div class="card w-auto" *ngFor="let item of questions">
+            <div class="card-header" [routerLink]="['/question/question-answer',item.id,item.title]" style="cursor: pointer;"
+            style="cursor: pointer;">
                 {{item.title}}
             </div>
-            <div class="card-body">
+            <div class="card-body" [routerLink]="['/question/question-answer',item.id,item.title]" style="cursor: pointer;"
+            style="cursor: pointer;">
               <blockquote class="blockquote mb-0">
                 <footer class="blockquote-footer">{{item.body}}</footer>
-              </blockquote>
+            </blockquote>
+        </div>
+    </div> -->
+    
+    <div class="row g-3 m-lg-5 d-flex justify-content-center">
+          <div class="row w-auto mt-auto" *ngFor="let question of questions">   
+            <h3>All Questions</h3>
+              <hr>
+            <div class="col d-flex">
+                <div class="col-md-7 d-flex-col" [routerLink]="['/question/question-answer',question.id,question.title]" style="cursor: pointer;">   
+                        <div> {{question.votes}} votes</div>
+                        <div> {{question.answers.length}} answers</div>
+                        <div> {{question.views}} views</div>
+                </div>
+                <div class="col-md-10 d-flex-col" [routerLink]="['/question/question-answer',question.id,question.title]" style="cursor: pointer;">
+                    <div><a class="text-decoration-none text-dark" href="">{{question.title}}</a></div>
+                    <div>{{question.description}}</div>
+                    Tags:-<p *ngFor="let item of question.tags" class="bg-body-tertiary d-flex">{{item}}</p>
+                </div>
+    
             </div>
-          </div>
         </div>
-        </div>
+                    </div>

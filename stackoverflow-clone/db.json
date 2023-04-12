@@ -35,6 +35,7 @@
   ],
   "questions": [
     {
+      "id": 1,
       "userId": 4,
       "title": "Dutt mistry ",
       "body": "esrtfyuiopysdguifdsfhuihjdfxghjgghj",
@@ -44,8 +45,34 @@
         "mistry",
         ""
       ],
-      "answers": [],
-      "id": 1
+      "votes": 0,
+      "views": 0,
+      "answers": [
+        {
+          "id": 1,
+          "userId": 4,
+          "body": "You have login for This and get the answer",
+          "createdAt": "2023-04-12T12:46:25.435Z"
+        },
+        {
+          "id": 1,
+          "userId": 4,
+          "body": "You have login for This and get the answeresrstujgewrfegtvhjmgettyhjmtetrghy",
+          "createdAt": "2023-04-12T12:46:36.553Z"
+        },
+        {
+          "id": 1,
+          "userId": 4,
+          "body": "w2e3yuikl/hrewrervhuetwervuhetwethbjkhe3w3tryh,uyt2",
+          "createdAt": "2023-04-12T12:50:56.923Z"
+        },
+        {
+          "id": 1,
+          "userId": 4,
+          "body": "You have tpo add All questions page in html",
+          "createdAt": "2023-04-12T13:02:09.951Z"
+        }
+      ]
     }
   ]
 }
