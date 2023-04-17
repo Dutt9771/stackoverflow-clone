@@ -23,7 +23,13 @@ router.paramMap.subscribe((params)=>{
   ngOnInit(){
     this.User_Answer_Form()
     this.Show_Questions()
+    this.Views_count()
   }
+
+  Check_Views(){
+
+  }
+
   views:any=0
   Views_In_Localstorage(){
     let cart_Arr: any = [];
@@ -80,52 +86,61 @@ router.paramMap.subscribe((params)=>{
       }
   }
   ngAfterViewInit(){
-    this.Views_In_Localstorage()
-    this.views
-    let Merge = JSON.parse(localStorage.getItem('Views'));
-    let view_Obj = Merge.find((user: any) => user.id == this.Question_id);
-    if(Merge){
-      if(view_Obj.views==false){
+    // this.Views_In_Localstorage()
+    // this.views+1
+    // let Merge = JSON.parse(localStorage.getItem('Views'));
+    // let view_Obj = Merge.find((user: any) => user.id == this.Question_id);
+    // if(Merge){
+    //   if(view_Obj.views==false){
         
-        this._questionsService.Views(this.Question_id,this.views).subscribe({next:(views_res:any)=>{
-          console.log("views_res",views_res)
-          view_Obj.views=true
-          console.log('Merge', Merge);
-          localStorage.setItem('Views', JSON.stringify(Merge));
-        },error:(views_err:any)=>{
-          console.log("views_err",views_err)
-        }})
-      }
-      }
+        
+      // }
+      // }
   }
-  // votes(x:any,y:any){
-  //   this._questionsService.get_Question_data().subscribe({next:(get_question_res:any)=>{
-  //     if(get_question_res){
-  //       this.questions=get_question_res
-  //       this.questions=this.questions.find((Question:any)=>Question.id===this.Question_id)
-  //       console.log("Question",this.questions)
-  //       // Question.votes=Question.votes+x
-  //       // if(Question.votes>0){
-  //       //   Question.votes=Question.votes-y
-  //       // }
-  //       // this._questionsService.votes(this.Question_id,Question).subscribe({next:(votes_res:any)=>{
-  //       //   console.log("votes_res",votes_res)
-  //       // },error:(votes_error:any)=>{
-  //       //   console.log("votes_error",votes_error)
-  //       // }})
-  //     }
-  //   }})
-  // }
+  
+Views_count(){
+  this._registerlogin.get_Register_data().subscribe((Register_res:any)=>{
+    if(Register_res){
+      let Login_User=JSON.parse(sessionStorage.getItem("Login_User"))
+      if(Login_User){
+
+        let User=Register_res.find((user:any)=>user.username===Login_User.username)
+        console.log("User_ID",User.id)
+        this._questionsService.Views(this.Question_id,User.id).subscribe((res:any)=>{
+          console.log("Res",res)
+        })
+      }
+
+    }
+  })
+}
   source: any="https://img.icons8.com/material-sharp/48/000000/thumb-up.png"
   myFunction(){
-  //   console.log("cliked")
-  //   if(this.source=="https://img.icons8.com/material-sharp/48/null/thumb-up.png"){
-  //     this.source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAABM0lEQVR4nO2ZQUrEQBREy70I6pzAhXt14QHEuYUrwfyf4BU8gXgEzyAjrjzD4ErBQzjqAWZKWhAdjHFGBX8xv6BWIfBeutMh3UBmkeLcgfMah1yDKPwITsI4RMN1SMK/1XiDI/YQPjV34Xyagn/vKeSe/PQoHCBsGm53wpc23ERg+IdO+HIdXIIofOkVhOFLTyAMX9qHMPwEzlWEiHFrTviyfN5BFt5fBc514Z1ExSrCV3b0I/i/6q/zn/DeJjDvDSnAHIGcQsiXmAu6ChnH2gLOS3WBvq6A8b79V1RFwFl/hlcRMD7jmCvKAmft8BoCk+59pOgCxsHX8AoCFfd1BaxsAny3ixdbwLvhIwsYH1FzWVfAZz1DiChgHMO5oSxwMRt8VIGae8oCtzEPQDKZTAYf8gIS92F92ggD3QAAAABJRU5ErkJggg=="
-  //     this.votes(1,0)
-  //   }else{
-  //     this.source="https://img.icons8.com/material-sharp/48/null/thumb-up.png"
-  //     this.votes(0,1)
-  //   }
+    this._registerlogin.get_Register_data().subscribe((Register_res:any)=>{
+      if(Register_res){
+        let Login_User=JSON.parse(sessionStorage.getItem("Login_User"))
+        if(Login_User){
+
+          let User=Register_res.find((user:any)=>user.username===Login_User.username)
+          console.log("User_ID",User.id)
+
+    console.log("cliked")
+    if(this.source=="https://img.icons8.com/material-sharp/48/null/thumb-up.png"){
+      this.source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAABM0lEQVR4nO2ZQUrEQBREy70I6pzAhXt14QHEuYUrwfyf4BU8gXgEzyAjrjzD4ErBQzjqAWZKWhAdjHFGBX8xv6BWIfBeutMh3UBmkeLcgfMah1yDKPwITsI4RMN1SMK/1XiDI/YQPjV34Xyagn/vKeSe/PQoHCBsGm53wpc23ERg+IdO+HIdXIIofOkVhOFLTyAMX9qHMPwEzlWEiHFrTviyfN5BFt5fBc514Z1ExSrCV3b0I/i/6q/zn/DeJjDvDSnAHIGcQsiXmAu6ChnH2gLOS3WBvq6A8b79V1RFwFl/hlcRMD7jmCvKAmft8BoCk+59pOgCxsHX8AoCFfd1BaxsAny3ixdbwLvhIwsYH1FzWVfAZz1DiChgHMO5oSxwMRt8VIGae8oCtzEPQDKZTAYf8gIS92F92ggD3QAAAABJRU5ErkJggg=="
+      // this.votes(1,0)
+      this._questionsService.votes(this.Question_id,User.id).subscribe((res:any)=>{
+        console.log("Res",res)
+      })
+    }else{
+      this.source="https://img.icons8.com/material-sharp/48/null/thumb-up.png"
+      // this.votes(0,1)
+      this._questionsService.votes(this.Question_id,User.id).subscribe((res:any)=>{
+        console.log("Res",res)
+      })
+    }
+  }
+}
+  })
   }
     Show_Questions(){
   

@@ -12,8 +12,11 @@
                   <footer class="blockquote-footer">{{item.body}} </footer>
                 </blockquote>
             </div>
-            <div class="card-header" *ngIf="item.answers" >
+            <div class="card-header" *ngIf="item.answers.length" >
                 Answer
+            </div>
+            <div class="card-header text-bg-light text-center" *ngIf="!item.answers.length" >
+                No Answer Yet
             </div>
             <div class="card-body"  *ngFor="let answer of item.answers">
               <blockquote class="blockquote mb-0">

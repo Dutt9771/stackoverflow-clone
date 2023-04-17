@@ -35,7 +35,6 @@ Search_In_All_Product(data:any){
           
           // this.ItemShowTagwise.filter((item,
           //       index) => this.ItemShowTagwise.indexOf(item) === index);
-        
         }
       }
 

@@ -23,9 +23,9 @@
 
     <div class="col d-flex" >
         <div class="col-md-7 d-flex-col" [routerLink]="['/question/question-answer',question.id,question.title]" style="cursor: pointer;">   
-            <div> {{question.votes}} votes</div>
+            <div> {{question.votes.vote}} votes</div>
             <div> {{question.answers.length}} answers</div>
-            <div> {{question.views}} views</div>
+            <div> {{question.views.views}} views</div>
         </div>
         <div class="col-md-10 d-flex-col" [routerLink]="['/question/question-answer',question.id,question.title]" style="cursor: pointer;">
             <div><a class="text-decoration-none text-dark" href="">{{question.title}}</a></div>

@@ -35,89 +35,34 @@
   ],
   "questions": [
     {
-      "id": 1,
-      "userId": 4,
-      "title": "Dutt mistry ",
-      "body": "esrtfyuiopysdguifdsfhuihjdfxghjgghj",
-      "createdAt": "2023-04-12T11:08:07.253Z",
-      "tags": [
-        {
-          "name": "Dutt"
-        },
-        {
-          "name": "mistry"
-        }
-      ],
-      "votes": 0,
-      "views": 12,
-      "answers": [
-        {
-          "id": 1,
-          "userId": 4,
-          "body": "You have login for This and get the answer",
-          "createdAt": "2023-04-12T12:46:25.435Z"
-        },
-        {
-          "id": 1,
-          "userId": 4,
-          "body": "You have login for This and get the answeresrstujgewrfegtvhjmgettyhjmtetrghy",
-          "createdAt": "2023-04-12T12:46:36.553Z"
-        },
-        {
-          "id": 1,
-          "userId": 4,
-          "body": "w2e3yuikl/hrewrervhuetwervuhetwethbjkhe3w3tryh,uyt2",
-          "createdAt": "2023-04-12T12:50:56.923Z"
-        },
-        {
-          "id": 1,
-          "userId": 4,
-          "body": "You have tpo add All questions page in html",
-          "createdAt": "2023-04-12T13:02:09.951Z"
-        }
-      ]
-    },
-    {
       "userId": 3,
-      "title": "Instal window 10 in pc",
-      "body": "qwertyuiopasdfghjkl;zxcvbnm,.sdfghjkl",
-      "createdAt": "2023-04-12T16:51:16.173Z",
+      "title": "qwertyuioweraqwsdfgbqsvbdbe",
+      "body": "sdfvb sdgefeffedfvewd fedv f ded dc fc fdc d",
+      "createdAt": "2023-04-17T04:49:36.580Z",
       "tags": [
         {
-          "name": "windows 10"
+          "name": "Windows"
         },
         {
-          "name": "boot"
+          "name": "angular"
         }
       ],
-      "votes": 0,
-      "views": 4,
+      "votes": {
+        "vote": 0,
+        "users_ids": [
+          3,
+          3
+        ]
+      },
+      "views": {
+        "views": 2,
+        "users_ids": [
+          3,
+          4
+        ]
+      },
       "answers": [],
-      "id": 2
-    },
-    {
-      "userId": 3,
-      "title": "Update window 7 to windows 10",
-      "body": "How to update windows 7 to window 10",
-      "createdAt": "2023-04-12T18:16:36.876Z",
-      "tags": [
-        {
-          "name": "window update"
-        },
-        {
-          "name": "window 7"
-        },
-        {
-          "name": "windows 10"
-        },
-        {
-          "name": "Update windows"
-        }
-      ],
-      "votes": 0,
-      "views": 1,
-      "answers": [],
-      "id": 3
+      "id": 1
     }
   ]
 }

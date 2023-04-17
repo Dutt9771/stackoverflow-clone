@@ -96,7 +96,14 @@ this.User_Question_Form()
             let Arr=this.Tags.push(item)
             console.log("this.Tags",this.Tags)
           }
-
+          let votes={
+            vote:0,
+            users_ids:[]
+          }
+          let views={
+            views:0,
+            users_ids:[]
+          }
         this.body=
           {
             "userId": User.id,
@@ -104,8 +111,8 @@ this.User_Question_Form()
             "body": this.question_form.value.description,
             "createdAt": new Date(),
             "tags":this.fruits,
-            "votes":0,
-            "views":0,
+            "votes":votes,
+            "views":views,
             "answers": []
 
           }
